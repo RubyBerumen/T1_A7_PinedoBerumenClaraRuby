@@ -105,21 +105,26 @@ class VerificarAlumnos{
 	public void mostrarPorCarreras(String carrera) {
 		for(int i = 0; i<mapAlumnos.size(); i++) {
 			Alumno a = mapAlumnos.get(i);
-			if (a.getCarrera().contains("ISC")) {
+			if (a.getCarrera().contains(carrera)) {
 				System.out.println(a);
 			}
 		}
 		
 	}
 	
-	public byte promeidoEdades() {
+	public void promeidoEdades() {
+		int prom=0;
+		for(int i = 0; i<mapAlumnos.size(); i++) {
+			Alumno a = mapAlumnos.get(i);
+			prom = prom +(int) a.getEdad();
+			
+		}
+		System.out.println("El promedio es: " +prom/5);
+		prom=0;
 		
-		
-		
-		return(byte)0;
 	}
 	
-	
+		
 	
 }//class VerificarAlumnos
 
@@ -136,7 +141,7 @@ public class AlumnosHashMap {
 			System.out.println("2) Vaciar lista");
 			System.out.println("3) Mostrar los alumnos por carrera");
 			System.out.println("4) Calcular Promedio de edades");
-			System.out.println("5) ");
+			//System.out.println("5) ");
 			System.out.println("6) Salir");
 			
 			try {
@@ -155,9 +160,18 @@ public class AlumnosHashMap {
                 	case 3 : 
                 		System.out.println("Ingresa la carrera: (IS,IIA,IM,LA,CP) ");
                 		String carrera = ent.nextLine().toUpperCase();
+                		ent.next();
                 		va.mostrarPorCarreras(carrera);
+                		break;
                 		
-                	
+                	case 4 : 
+                		va.promeidoEdades();
+                		break;
+                		
+                	case 6 : 
+                		salir = true;
+                        break;
+                		
                 	default:
                         System.out.println("Debes ingresar números entre 1 y 6");
                
@@ -169,20 +183,13 @@ public class AlumnosHashMap {
                 ent.next();
 			}
 			 
-			    
-			    
-			       
+			          
 			
 		} while (!salir);
 		
 		
 		
-		
-		
-		
-		
-		
-		
+
 
 	}
 
